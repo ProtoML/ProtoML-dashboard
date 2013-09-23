@@ -47,9 +47,28 @@ initialize = function() {
     rBoxen.bind('click', dragStart);
     lBoxen = $('.lBox');
     lBoxen.bind('click', drop);
+    boxen = $('.box');
+    boxen.bind('click', moveBox);
+}
+
+moveBox = function(/* Event */ e) {
+    var elem = $(e.target);
+    $(document).on('mousemove', function(e) {
+        var x = elem.width()/2;
+        var y = elem.height()/2;
+        elem.offset({left: e.pageX-x, top: e.pageY-y});
+    });
+    elem.bind('click', stopBox);
+}
+
+stopBox = function(/* Event */ e) {
+    var elem = $(e.target);
+    $(document).off('mousemove');
+    elem.bind('click', moveBox);
 }
 
 dragStart = function(/* Event */ e) {
+    e.stopPropagation();
     var elem = $(e.target);
     var off = elem.offset();
     startX = off.left + elem.width();
@@ -80,6 +99,7 @@ dragStart = function(/* Event */ e) {
 }
 
 drop = function(/* Event */ e) {
+    e.stopPropagation();
     $(document).off('mousemove');
     currArrow = [];
 }

@@ -43,7 +43,17 @@ var arrow = (function() {
         }
         else
         {
-           _currHeads.push(elem[0].id); 
+            $('.lBox').each( function( index, value) {
+                var idArray = value.id.split(",");
+                value.id = "";
+                for(var i=1; i<idArray.length; i++ ) {
+                    if(idArray[i] != elem[0].id)
+                    {
+                        value.id += "," + idArray[i];
+                    }
+                }
+            });
+            _currHeads.push(elem[0].id); 
         }
         $(document).mousemove(arrow.moveArrows);
     };

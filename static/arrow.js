@@ -1,12 +1,14 @@
+const Sarrow = "M%s %s L%s %s L%s %s";
+const Sline = "M%s %s L%s %s";
 Raphael.fn.arrow = function (x1, y1, x2, y2, n) {
-    size = 8;
+    s = 8;
     //Arrowhead
     var angle = Math.atan2(x1-x2,y2-y1);
     angle = (angle / (2 * Math.PI)) * 360;
-    var arrowPath = this.path("M" + x2 + " " + y2 + " L" + (x2  - size) + " " + (y2  - size) + " L" + (x2  - size)  + " " + (y2  + size) + " L" + x2 + " " + y2 ).attr("fill","black").transform("R" + (90+angle));
+    var arrowPath = this.path(sprintf(Sarrow, x2, y2, x2-s, y2-s, x2-s,y2+s, x2, y2)).attr("fill","black").transform("R" + (90+angle));
     arrowPath.id = "arrowHead" + n;
     //Line
-    var linePath = this.path("M" + x1 + " " + y1 + " L" + x2 + " " + y2);
+    var linePath = this.path(sprintf(Sline, x1, y1, x2, y2));
     linePath.id = "arrowLine" + n;
     return [linePath, arrowPath];
 };
@@ -76,8 +78,8 @@ var arrow = (function() {
         var angle = Math.atan2(x1-x2,y2-y1);
         angle = (angle / (2 * Math.PI)) * 360;
         //Line
-        var linePath = "M" + x1 + " " + y1 + " L" + x2 + " " + y2;
-        var arrowPath = "M" + x2 + " " + y2 + " L" + (x2  - s) + " " + (y2  - s) + " L" + (x2  - s)  + " " + (y2  + s) + " L" + x2 + " " + y2;
+        var linePath = sprintf(Sline, x1, y1, x2, y2);
+        var arrowPath = sprintf(Sarrow, x2, y2, x2-s, y2-s, x2-s,y2+s, x2, y2);
         paper.getById('arrowLine' + n).attr({path: linePath});
         paper.getById('arrowHead' + n).attr({path: arrowPath}).transform("r" + (90+angle));
     };
@@ -90,8 +92,8 @@ var arrow = (function() {
         var angle = Math.atan2(x1-x2,y2-y1);
         angle = (angle / (2 * Math.PI)) * 360;
         //Line
-        var linePath = "M" + x1 + " " + y1 + " L" + x2 + " " + y2;
-        var arrowPath = "M" + x2 + " " + y2 + " L" + (x2  - s) + " " + (y2  - s) + " L" + (x2  - s)  + " " + (y2  + s) + " L" + x2 + " " + y2;
+        var linePath = sprintf(Sline, x1, y1, x2, y2);
+        var arrowPath = sprintf(Sarrow, x2, y2, x2-s, y2-s, x2-s,y2+s, x2, y2);
         paper.getById('arrowLine' + n).attr({path: linePath});
         paper.getById('arrowHead' + n).attr({path: arrowPath}).transform("r" + (90+angle));
     };

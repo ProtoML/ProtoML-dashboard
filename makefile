@@ -1,4 +1,3 @@
-OSFLAGS = -Wall -g $(DEBUG)
 compile = go build -o $(2) $(1)
 
 %.exe: %.go

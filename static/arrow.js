@@ -18,18 +18,23 @@ var arrow = (function() {
         , _currNum = 1
         ;
 
-    arr.moveArrows = function(/* Event */ e) {
-        for (var i in _currHeads) {
-            if(_currHeads[i] > 0)
+    //Public functions
+    arr.deleteArrows = function(/* Element */ elem) {
+        elem.children('.lBox').each( function( index, value) {
+            if(value.id != "")
             {
-                arrow.updateHead(e.pageX,e.pageY, _currHeads[i]);
+                var idArray = value.id.split(",");
+                for(var i=1; i<idArray.length; i++ ) {
+                    _deleteArrow(idArray[i]);
+                }
             }
-            else
+        });
+        elem.children('.rBox').each( function( index, value) {
+            if(value.id != "")
             {
-                _currHeads[i] = -1 * _currHeads[i];
-                arr = paper.arrow(startX,startY,e.pageX,e.pageY, _currHeads[i]);
+                _deleteArrow(value.id);
             }
-        }
+        });
     };
     arr.newArrow = function(/* Event */ e) {
         e.stopPropagation();
@@ -57,7 +62,7 @@ var arrow = (function() {
             });
             _currHeads.push(elem[0].id); 
         }
-        $(document).mousemove(arrow.moveArrows);
+        $(document).mousemove(_moveArrows);
     };
     arr.stop = function(/* Event */ e) {
         e.stopPropagation();
@@ -68,7 +73,6 @@ var arrow = (function() {
         $(document).off('mousemove');
         _currHeads = [];
     };
-
     arr.updateHead = function(x2, y2, n) {
         var s = 8;
         var arrowLinePath = paper.getById('arrowLine' + n).attr("path");
@@ -98,6 +102,50 @@ var arrow = (function() {
         paper.getById('arrowHead' + n).attr({path: arrowPath}).transform("r" + (90+angle));
     };
 
+    //Private functions
+    _moveArrows = function(/* Event */ e) {
+        for (var i in _currHeads) {
+            if(_currHeads[i] > 0)
+            {
+                arrow.updateHead(e.pageX,e.pageY, _currHeads[i]);
+            }
+            else
+            {
+                _currHeads[i] = -1 * _currHeads[i];
+                arr = paper.arrow(startX,startY,e.pageX,e.pageY, _currHeads[i]);
+            }
+        }
+    };
+    _deleteArrow = function(id) {
+        //Remove the arrow
+        var line = paper.getById('arrowLine' + id)
+        if(line)
+        {
+            line.remove();
+        }
+        var head = paper.getById('arrowHead' + id)
+        if(head)
+        {
+            head.remove();
+        }
+        //Remove references to arrow
+        $('.lBox').each( function( index, value) {
+            var idArray = value.id.split(",");
+            value.id = "";
+            for(var i=1; i<idArray.length; i++ ) {
+                if(idArray[i] != id) {
+                    value.id += "," + idArray[i];
+                }
+            }
+        });
+        $('.rBox').each( function( index, value) {
+            if(value.id == id) {
+                value.id = "";
+            }
+        });
+    };
+
+    //Return public object
     return arr;
 }());
 

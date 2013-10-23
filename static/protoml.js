@@ -7,7 +7,7 @@ $(document).ready(function() {
     events.initialize();
 });
 
-test = function() {
+createTransform = function() {
     var html =  $('#transform')[0].innerHTML;
     var movie = $('#movie')[0];
     movie.innerHTML += html;
@@ -20,7 +20,7 @@ deleteTransform = function() {
     selected.remove();
 };
 
-transformTab = function(whichClass) {
+openTransformTab = function(whichClass) {
     var settings = $('.selected').children(whichClass);
     settings.removeClass('hidden');
     var editor = ace.edit("editor");

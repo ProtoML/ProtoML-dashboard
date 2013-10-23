@@ -3,13 +3,13 @@
 <div class="topNav">
   <div class="menu">Settings
     <ul>
-      <li onclick="test();">Add Transform</li>
+      <li onclick="createTransform();">Add Transform</li>
       <li>Upload File</li>
       <li>Search</li>
       <li>Transform
         <ul>
-          <li onclick="transformTab('.settings');">Edit Settings</li>
-          <li onclick="transformTab('.code');">Edit Code</li>
+          <li onclick="openTransformTab('.settings');">Edit Settings</li>
+          <li onclick="openTransformTab('.code');">Edit Code</li>
           <li onclick="deleteTransform();">Delete</li>
         </ul>
       </li>
@@ -28,10 +28,13 @@
     <div class='rBox'></div>
     <div class='settings hidden'>
       <div class='inner'>
-        <div class="title">Settings:</div>
-        <div class="setting">Setting 1:<input type="text"></text></div>
-        <div class="setting">Setting 2:<input type="text"></text></div>
-        <div class="setting">Setting 3:<input type="text"></text></div>
+        <form name="settings" action="/save" method="post">
+          <div class="title">Settings:</div>
+          <div class="setting">Setting 1:<input type="text" name="input1"></text></div>
+          <div class="setting">Setting 2:<input type="text" name="input2"></text></div>
+          <div class="setting">Setting 3 (int):<input type="text" name="input3"></text></div>
+          <input type="submit" value="Save">
+       </form>
       </div>
     </div>
     <div class='code hidden'>

@@ -5,11 +5,11 @@
     <ul>
       <li onclick="createTransform();">Add Transform</li>
       <li>Upload File</li>
-      <li>Search</li>
+      <li onclick="lightbox.search();">Search</li>
       <li>Transform
         <ul>
-          <li onclick="openTransformTab('.settings');">Edit Settings</li>
-          <li onclick="openTransformTab('.code');">Edit Code</li>
+          <li onclick="lightbox.transformTab('.settings');">Edit Settings</li>
+          <li onclick="lightbox.transformTab('.code');">Edit Code</li>
           <li onclick="deleteTransform();">Delete</li>
         </ul>
       </li>
@@ -27,29 +27,42 @@
     <div class='lBox'></div>
     <div class='rBox'></div>
     <div class='settings hidden'>
-      <div class='inner'>
-        <form name="settings" action="/save" method="post">
-          <div class="title">Settings:</div>
-          <div class="setting">Setting 1:<input type="text" name="input1"></text></div>
-          <div class="setting">Setting 2:<input type="text" name="input2"></text></div>
-          <div class="setting">Setting 3 (int):<input type="text" name="input3"></text></div>
-          <input type="submit" value="Save">
-       </form>
-      </div>
+      <form name="settings" action="/save" method="post">
+        <div class="title">Settings:</div>
+        <div class="setting">Setting 1:<input type="text" name="input1"></text></div>
+        <div class="setting">Setting 2:<input type="text" name="input2"></text></div>
+        <div class="setting">Setting 3 (int):<input type="text" name="input3"></text></div>
+        <input type="submit" value="Save">
+     </form>
     </div>
     <div class='code hidden'>
-      <div class='inner'>
-        <div class="title">Code:</div>
-        <div id="editor">
-          class BharathSucks:
-            def __init__(self):
-              self.purple = "pink"
-            def run(self):
-              return self.purple
-        </div>
+      <div class="title">Code:</div>
+      <div id="editor">
+        class BharathSucks:
+          def __init__(self):
+            self.purple = "pink"
+          def run(self):
+            return self.purple
       </div>
     </div>
   </div>
+</div>
+<div id="searchBox" class="hidden">
+  Search:
+  <select id="searchType" name="searchType">
+    <option value="data">Data</option>
+    <option value="transform">Transform</option>
+  </select>
+  <input id="searchQuery" type="text" placeholder="search" size="25"/>
+  <input type="button" onclick="search.query()" value="Search" />
+  <div id="searchResults"></div>
+</div>
+<div id="lbox" onclick="lightbox.close(event);" class="lightbox hidden">
+  <div class="whiteBox">
+    <a class="boxclose" id="boxclose" onclick="lightbox.close(event);"></a>
+    <div id="content" class="content"></div>
+  </div>
+  <input type="hidden" id="id" />
 </div>
 {{template "footer"}}
 {{end}}

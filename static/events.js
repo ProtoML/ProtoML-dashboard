@@ -15,8 +15,6 @@ var events = (function() {
         var boxen = $('.box');
         boxen.bind('click', _startBox);
         boxen.bind('dblclick', _selectBox);
-        var tabs = $('.settings,.code');
-        tabs.bind('click', closeTransformTab);
     };
 
     //Private functions

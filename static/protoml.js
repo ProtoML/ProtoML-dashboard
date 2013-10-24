@@ -19,18 +19,3 @@ deleteTransform = function() {
     arrow.deleteArrows(selected);
     selected.remove();
 };
-
-openTransformTab = function(whichClass) {
-    var settings = $('.selected').children(whichClass);
-    settings.removeClass('hidden');
-    var editor = ace.edit("editor");
-};
-
-closeTransformTab = function(/* Event */ e) {
-    var elem = $(e.target);
-    if(!elem.parent().hasClass('box'))
-    {
-        return;
-    }
-    elem.addClass('hidden');
-};

@@ -1,68 +1,64 @@
 {{define "content"}}
 {{template "header" .}}
-<div class="topNav">
-  <div class="menu">Settings
-    <ul>
-      <li onclick="createTransform();">Add Transform</li>
-      <li>Upload File</li>
-      <li onclick="lightbox.search();">Search</li>
-      <li>Transform
-        <ul>
-          <li onclick="lightbox.transformTab('.settings');">Edit Settings</li>
-          <li onclick="lightbox.transformTab('.code');">Edit Code</li>
-          <li onclick="deleteTransform();">Delete</li>
-        </ul>
-      </li>
-    </ul>
+<!--
+
+Blue:
+#6d9eeb
+
+Orange:
+#f6b26b
+
+-->
+
+<header>
+  <div class="ui fixed inverted menu">
+    <div class="item">
+      <h5 class="ui header" style="color:#6d9eeb">Proto</h5><h5 class="ui header" style="color:#f6b26b">ML</h5>
+    </div>
+    <a class="item addtransform">
+      <i class="icon add sign"></i>
+       Add Transform
+    </a>
+    <div class="right menu">
+      <a class="item add searchtransform">
+        <i class="icon search"></i>
+        Search Data
+       </a>
+      <a class="item add searchtransform">
+        <i class="icon search"></i>
+        Search Transform
+       </a>
+    </div>
   </div>
-</div>
+</header>
+
 <div>
   <div id="movie"></div>
 </div>
+
 <div id="raphael">
 </div>
+
 <div id="MASK"></div>
-<div id="transform">
-  <div class='box'>
-    <div class='lBox'></div>
-    <div class='rBox'></div>
-    <div class='settings hidden'>
-      <form name="settings" action="/save" method="post">
-        <div class="title">Settings:</div>
-        <div class="setting">Setting 1:<input type="text" name="input1"></text></div>
-        <div class="setting">Setting 2:<input type="text" name="input2"></text></div>
-        <div class="setting">Setting 3 (int):<input type="text" name="input3"></text></div>
-        <input type="submit" value="Save">
-     </form>
-    </div>
-    <div class='code hidden'>
-      <div class="title">Code:</div>
-      <div id="editor">
-        class BharathSucks:
-          def __init__(self):
-            self.purple = "pink"
-          def run(self):
-            return self.purple
-      </div>
-    </div>
+
+<div class="ui modal newtransform">
+  <div class="header">
+    Create Transform
+  </div>
+  <div class="content"> foobar </div>
+  <div class="actions">
+    <div class="ui button">Create</div>
+    <div class="ui button">Cancel</div>
   </div>
 </div>
-<div id="searchBox" class="hidden">
-  Search:
-  <select id="searchType" name="searchType">
-    <option value="data">Data</option>
-    <option value="transform">Transform</option>
-  </select>
-  <input id="searchQuery" type="text" placeholder="search" size="25"/>
-  <input type="button" onclick="search.query()" value="Search" />
-  <div id="searchResults"></div>
-</div>
-<div id="lbox" onclick="lightbox.close(event);" class="lightbox hidden">
-  <div class="whiteBox">
-    <a class="boxclose" id="boxclose" onclick="lightbox.close(event);"></a>
-    <div id="content" class="content"></div>
+
+<div class="ui modal searchtransform">
+  <i class="icon close"></i>
+  <div class="header">
+    Search Transform
   </div>
-  <input type="hidden" id="id" />
+  <div class="content"> foobar </div>  
 </div>
+
 {{template "footer"}}
 {{end}}

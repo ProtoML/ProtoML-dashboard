@@ -75,7 +75,7 @@ func save(w http.ResponseWriter, r *http.Request) {
 	MAIN
 **/
 func main() {
-	port := ":80"
+	port := ":8000"
 	http.HandleFunc("/static/", static)
 	http.HandleFunc("/api", api);
 	http.HandleFunc("/save", save);

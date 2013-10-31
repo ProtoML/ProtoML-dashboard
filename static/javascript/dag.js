@@ -30,15 +30,19 @@ Dag.prototype.loadFromList(/* Array */ data) {
 }
 
 Dag.prototype.addNode(/* String */ id, /* Array */ parents) {
+    //Increase matrix width
     this.matrix.forEach(function(element, index, array) {
         element.push(false);
     });
+    //Create new node
     var curLength = this.matrix.length;
     var newNode = Node(id, curLength);
     this.nodes[id] = newNode;
+    //Initialize new row of matrix
     var newRow = [false];
     while(curLength--) newRow.push(false);
     this.matrix.push(newRow);
+    //Set parent -> new node connections
     parents.forEach(function(element, index, array) {
         var node = Dag.getNodeById(element);
         this.matrix[node.getPosition()][this.matrix.length] = true;

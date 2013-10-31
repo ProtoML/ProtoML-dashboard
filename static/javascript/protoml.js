@@ -16,7 +16,7 @@ menuModal = function(selector,eventSelector) {
 }
 
 loadDag = function() {
-    var dagArray = [ [1,[]],[2,[1]],[3,[2,4]],[4,[]] ];
+    var dagArray = [ [1,[3]],[2,[3]],[3,[4,5]],[4,[]],[5,[6]],[6,[7,8,9]],[7,[]],[8,[]],[9,[]] ];
     var dag = new Dag();
     dag.loadFromList(dagArray);
     dag.render();

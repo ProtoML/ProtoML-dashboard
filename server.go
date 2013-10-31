@@ -1,19 +1,19 @@
 package main
 
 import (
-	"strconv"
-	"fmt"
-	"net/http"
-	"html/template"
 	"encoding/json"
+	"fmt"
+	"html/template"
+	"net/http"
 	"os"
+	"strconv"
 )
 
 /**
 	Common Functions
 **/
 type Page struct {
-	Title string
+	Title    string
 	Template string
 }
 
@@ -41,7 +41,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 }
 
 func api(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w,	"Response from API poll");
+	fmt.Fprintf(w, "Response from API poll")
 }
 
 func save(w http.ResponseWriter, r *http.Request) {
@@ -77,8 +77,8 @@ func save(w http.ResponseWriter, r *http.Request) {
 func main() {
 	port := ":80"
 	http.HandleFunc("/static/", static)
-	http.HandleFunc("/api", api);
-	http.HandleFunc("/save", save);
+	http.HandleFunc("/api", api)
+	http.HandleFunc("/save", save)
 	http.HandleFunc("/", index)
 	http.ListenAndServe(port, nil)
 }

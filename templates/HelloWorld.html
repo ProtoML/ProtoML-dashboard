@@ -9,6 +9,10 @@
       <i class="icon add sign"></i>
        Add Transform
     </a>
+    <a class="item" onclick="loadDag()">
+      <i class="icon add sign"></i>
+       Load Dag
+    </a>
     <div class="right menu">
       <a class="item add searchtransform">
         <i class="icon search"></i>
@@ -22,22 +26,45 @@
   </div>
 </header>
 
-<div>
+<div class="movieBox">
   <div id="movie"></div>
 </div>
 
 <div id="raphael">
 </div>
 
-<div id="MASK"></div>
-
+<div id="transform">
+  <div class='box'>
+    <div class='lBox'></div>
+    <div class='rBox'></div>
+    <div class='settings hidden'>
+      <form name="settings" action="/save" method="post">
+        <div class="title">Settings:</div>
+        <div class="setting">Setting 1:<input type="text" name="input1"></text></div>
+        <div class="setting">Setting 2:<input type="text" name="input2"></text></div>
+        <div class="setting">Setting 3 (int):<input type="text" name="input3"></text></div>
+        <input type="submit" value="Save">
+     </form>
+    </div>
+    <div class='code hidden'>
+      <div class="title">Code:</div>
+      <div id="editor">
+        class DummyClass:
+          def __init__(self):
+            self.purple = "pink"
+          def run(self):
+            return self.purple
+      </div>
+    </div>
+  </div>
+</div>
 <div class="ui modal newtransform">
   <div class="header">
     Create Transform
   </div>
   <div class="content"> foobar </div>
   <div class="actions">
-    <div class="ui button">Create</div>
+    <div class="ui button" onclick="createTransform();">Create</div>
     <div class="ui button">Cancel</div>
   </div>
 </div>
@@ -47,7 +74,34 @@
   <div class="header">
     Search Transform
   </div>
-  <div class="content"> foobar </div>  
+  <div class="content">
+    <div class="ui input fluid icon">
+      <input type="text" placeholder="Search" />
+      <i class="search icon"></i>
+    </div>
+    <table class="ui table segment">
+      <thead>
+        <tr>
+          <th class="four wide">Data:</th>
+          <th>Value:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data1</td>
+          <td>Value1</td>
+        </tr>
+        <tr>
+          <td>Data2</td>
+          <td>Value2</td>
+        </tr>
+        <tr>
+          <td>Data3</td>
+          <td>Value3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
 </div>
 
 {{template "footer"}}

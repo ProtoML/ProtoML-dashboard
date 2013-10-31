@@ -15,15 +15,15 @@ menuModal = function(selector,eventSelector) {
     $(selector).modal('attach events', eventSelector, 'show');
 }
 
-createTransform = function() {
-    var html =  $('#transform')[0].innerHTML;
-    var movie = $('#movie')[0];
-    movie.innerHTML += html;
-    events.updateHandlers();
+loadDag = function() {
+    var dagArray = [ [1,[]],[2,[1]],[3,[2,4]],[4,[]] ];
+    var dag = new Dag();
+    dag.loadFromList(dagArray);
+    dag.render();
 };
-
-deleteTransform = function() {
-    var selected = $('.selected');
-    arrow.deleteArrows(selected);
-    selected.remove();
+createTransform = function() {
+    var movie = $('#movie');
+    var jNode = $($('#transform')[0].innerHTML);
+    movie.append(jNode);
+    events.updateHandlers();
 };

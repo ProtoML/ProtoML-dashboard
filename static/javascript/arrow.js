@@ -64,6 +64,22 @@ var arrow = (function() {
         }
         $(document).mousemove(_moveArrows);
     };
+    arr.edgeArrow = function(/* Node */ inNode, /* Node */ outNode) {
+        var startElem = inNode.getElement()
+            , startOff = startElem.offset()
+            , startX = startOff.left + startElem.width()
+            , startY = startOff.top + startElem.height()/2
+            , endElem = outNode.getElement()
+            , endOff = endElem.offset()
+            , endX = endOff.left + 10
+            , endY = endOff.top + endElem.height()/2
+            , rBox = startElem.children('.rBox')
+            , lBox = endElem.children('.lBox')
+            ;
+        lBox[0].id += "," + _currNum;
+        rBox[0].id = _currNum;
+        paper.arrow(startX, startY, endX, endY, _currNum++);
+    };
     arr.stop = function(/* Event */ e) {
         e.stopPropagation();
         var elem = $(e.target)[0];

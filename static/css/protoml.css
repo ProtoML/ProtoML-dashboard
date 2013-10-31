@@ -24,6 +24,8 @@ body { margin:0; background: #eee; }
 .hidden { display: none; }
 
 /* Transform boxes */
+.movieBox { padding-top: 50px; }
+.movieBox #movie { position:relative; }
 .box {
     display:inline-block;
     width: 140px; height: 100px;

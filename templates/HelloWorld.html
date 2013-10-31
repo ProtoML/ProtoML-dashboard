@@ -76,29 +76,30 @@
   </div>
   <div class="content">
     <div class="ui input fluid icon">
-      <input type="text" placeholder="Search" />
-      <i class="search icon"></i>
+      <form id="searchForm">
+        <div>
+          <select id="searchType" name="type">
+            <option value="data">Data</option>
+            <option value="transform">Transform</option>
+          </select>
+          <select id="searchField" name="field">
+            <option value="ExclusiveType">TypeName</option>
+            <option value="Tags">Tags</option>
+            <option value="FileFormat">Format</option>
+          </select>
+          <input id="searchQuery" name="query" onchange="search.query()" type="text" placeholder="Search" />
+          <i class="search icon"></i>
+        </div>
     </div>
     <table class="ui table segment">
       <thead>
         <tr>
-          <th class="four wide">Data:</th>
-          <th>Value:</th>
+          <th class="four wide">Source:</th>
+          <th>FileFormat:</th>
+          <th>ExclusiveType:</th>
         </tr>
       </thead>
-      <tbody class="searchtransform rows">
-        <tr>
-          <td>Data1</td>
-          <td>Value1</td>
-        </tr>
-        <tr>
-          <td>Data2</td>
-          <td>Value2</td>
-        </tr>
-        <tr>
-          <td>Data3</td>
-          <td>Value3</td>
-        </tr>
+      <tbody id="searchResults" class="searchtransform rows">
       </tbody>
     </table>
   </div>  

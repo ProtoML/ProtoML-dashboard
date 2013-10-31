@@ -2,26 +2,8 @@ body { margin:0; background: #eee; }
 
 #raphael { pointer-events: none; position:absolute; top:0; left:0;}
 #transform { display:none; }
-#MASK {
-    position:absolute;
-    height:0; width:100%;
-    background-color:#000;
-    opacity:0;
-    -webkit-transition: opacity 0.15s ease-in-out;
-    -moz-transition: opacity 0.15s ease-in-out;
-    -o-transition: opacity 0.15s ease-in-out;
-    -ms-transition: opacity 0.15s ease-in-out;
-    transition: opacity 0.15s ease-in-out;
-}
-#MASK.show {
-    opacity:0.8;
-    height:100%;
-}
-#MASK.hide {
-    opacity:0;
-    height:100%;
-}
 .hidden { display: none; }
+#searchForm input { width: 500px; }
 
 /* Transform boxes */
 .movieBox { padding-top: 50px; }

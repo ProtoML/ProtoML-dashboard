@@ -5,10 +5,9 @@ $(document).ready(function() {
         console.log("Worker said: " + e.data);
     }
     events.initialize();
-    $("#searchForm").change(search.query());
 
     menuModal(".ui.modal.newtransform",".item.addtransform");
-    menuModal(".ui.modal.searchtransform",".item.searchtransform");
+    menuModal(".ui.modal.search",".item.search");
 });
 
 menuModal = function(selector,eventSelector) {

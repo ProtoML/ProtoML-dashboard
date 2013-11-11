@@ -14,13 +14,9 @@
        Load Dag
     </a>
     <div class="right menu">
-      <a class="item add searchtransform">
+      <a class="item add search">
         <i class="icon search"></i>
-        Search Data
-       </a>
-      <a class="item add searchtransform">
-        <i class="icon search"></i>
-        Search Transform
+        Search
        </a>
     </div>
   </div>
@@ -69,25 +65,25 @@
   </div>
 </div>
 
-<div class="ui modal searchtransform">
+<div class="ui modal search">
   <i class="icon close"></i>
   <div class="header">
-    Search Transform
+    Search
   </div>
   <div class="content">
     <div class="ui input fluid icon">
       <form id="searchForm">
         <div>
-          <select id="searchType" name="type">
+          <select id="searchType" name="type" onchange="search.query()">
             <option value="data">Data</option>
             <option value="transform">Transform</option>
           </select>
-          <select id="searchField" name="field">
-            <option value="ExclusiveType">TypeName</option>
+          <select id="searchField" name="field" onchange="search.query()">
+            <option value="ExclusiveType">ExclusiveType</option>
             <option value="Tags">Tags</option>
             <option value="FileFormat">Format</option>
           </select>
-          <input id="searchQuery" name="query" onchange="search.query()" type="text" placeholder="Search" />
+          <input id="searchQuery" name="query" onkeypress="search.query()" type="text" placeholder="Search" />
           <i class="search icon"></i>
         </div>
     </div>
@@ -99,7 +95,7 @@
           <th>ExclusiveType:</th>
         </tr>
       </thead>
-      <tbody id="searchResults" class="searchtransform rows">
+      <tbody id="searchResults" class="search rows">
       </tbody>
     </table>
   </div>  

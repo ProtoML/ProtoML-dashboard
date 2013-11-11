@@ -7,23 +7,26 @@ var search = (function() {
 
     //Public functions
     srch.query = function() {
-        var AJAX = new XMLHttpRequest()
-            , type = $('#searchType')[0].value
+        var type = $('#searchType')[0].value
             , field = $('#searchField')[0].value
             , query = $('#searchQuery')[0].value
             , address = sprintf(addressString, type, field, query)
             ;
-        console.log(address);
-        AJAX.open("GET", address, false);
-        AJAX.send(null);
-        if(AJAX.status == 200) {
-            _processResults(AJAX.responseText);
-        }
+        $.ajax({
+            type: "GET",
+            url: address,
+            success: _processResults,
+            error: _processError
+        });
     };
 
     //Private functions
-    _processResults = function(resultString) {
-        var results = JSON.parse(resultString).hits
+    _processResults = function(data, status, xhr) {
+        if(status != 200) {
+            console.log("Elasticsearch returned: " + status);
+            return;
+        }
+        var results = JSON.parse(xhr.resultString).hits
             , resultDiv = $('#searchResults')
             ;
         resultDiv[0].innerHTML = "";
@@ -37,6 +40,9 @@ var search = (function() {
             result += "</td></tr>";
             resultDiv[0].innerHTML += result;
         });
+    };
+    _processError = function(xhr, status, error) {
+        console.log(error);
     };
 
     //Return public object

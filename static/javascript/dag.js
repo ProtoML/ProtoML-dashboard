@@ -69,11 +69,13 @@ Dag.prototype.render = function() {
         node.setLayout(value);
         node.addToPage();
     });
+    jsPlumb.repaintEverything();
     layout.eachEdge(function(e, inId, outId, value) {
-        var inNode = self.getNodeById(inId)
-        ,   outNode = self.getNodeById(outId)
+        var inBox = self.getNodeById(inId).getRight()
+        ,   outBox = self.getNodeById(outId).getLeft()
         ;
-        arrow.edgeArrow(inNode, outNode);
+        console.log(inBox);
+        jsPlumb.connect({source:inBox, target:outBox});
     });
 }
 /*

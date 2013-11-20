@@ -26,34 +26,6 @@
   <div id="movie"></div>
 </div>
 
-<div id="raphael">
-</div>
-
-<div id="transform">
-  <div class='box'>
-    <div class='lBox'></div>
-    <div class='rBox'></div>
-    <div class='settings hidden'>
-      <form name="settings" action="/save" method="post">
-        <div class="title">Settings:</div>
-        <div class="setting">Setting 1:<input type="text" name="input1"></text></div>
-        <div class="setting">Setting 2:<input type="text" name="input2"></text></div>
-        <div class="setting">Setting 3 (int):<input type="text" name="input3"></text></div>
-        <input type="submit" value="Save">
-     </form>
-    </div>
-    <div class='code hidden'>
-      <div class="title">Code:</div>
-      <div id="editor">
-        class DummyClass:
-          def __init__(self):
-            self.purple = "pink"
-          def run(self):
-            return self.purple
-      </div>
-    </div>
-  </div>
-</div>
 <div class="ui modal newtransform">
   <div class="header">
     Create Transform
@@ -98,6 +70,36 @@
       <tbody id="searchResults" class="search rows">
       </tbody>
     </table>
+  </div>  
+</div>
+<div class="ui modal api">
+  <i class="icon close"></i>
+  <div class="content">
+    <div class="loadingMsg">
+      <i class="loading icon"></i>
+      <span>Loading Transform...</span>
+    </div>
+    <div>
+      <div class="ui compact menu">
+        <div class="ui simple dropdown item">
+          Select Transform<i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item">Transform1</div>
+            <div class="item">Transform2</div>
+            <div class="item">Transform3</div>
+          </div>
+        </div>
+      </div>
+      <div>
+      </div>
+      <div>
+        <div>{</div>
+        <div> type: [ csv, tsv, w.e ],</div>
+        <div> value: <div class="ui input"><input type="text"></input></div>,</div>
+        <div> constraints: (purple, red, orange)</div>
+        <div> optional: FALSE</div>
+        <div>}</div>
+    </div>
   </div>  
 </div>
 

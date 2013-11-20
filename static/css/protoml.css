@@ -1,7 +1,5 @@
 body { margin:0; background: #eee; }
 
-#raphael { pointer-events: none; position:absolute; top:0; left:0;}
-#transform { display:none; }
 .hidden { display: none; }
 #searchForm input { width: 500px; }
 
@@ -11,20 +9,31 @@ body { margin:0; background: #eee; }
 .box {
     display:inline-block;
     width: 140px; height: 100px;
-    background-color:#fff;
-    margin: 5px 50px;
+    background-color:#DDEEFF;
     border: solid 1px #555;
     border-radius:10px;
     position:absolute;
     left:200px;
 }
+.box:hover {
+    box-shadow: 2px 2px 19px #AAAAAA;
+    cursor: pointer;
+}
 .box.selected {
     background-color:#ADFFFF;
     border:2px solid #033;
 }
-.lBox { float:left; background-color: #FF2E2E;  height: 40px; width: 20px; border-radius: 0 20px 20px 0; margin-top:30px;}
-.rBox { float:right; background-color: #009E1D; height: 40px; width: 20px; border-radius: 20px 0 0 20px; margin-top:30px; }
-
+.leftEnd svg * {fill: #FF2E2E;}
+.leftEnd:hover {
+    box-shadow: 2px 2px 19px #AAAAAA;
+}
+.rightEnd svg * {fill: #009E1D;}
+.rightEnd { border-radius:10px; }
+.rightEnd:hover {
+    box-shadow: 2px 2px 19px #AAAAAA;
+    cursor: pointer;
+}
+/* Header */
 header .header {
     display: inline;
 }
@@ -33,4 +42,10 @@ header .header.orange {
 }
 header .header.headblue {
     color:#6d9eeb;
+}
+
+.loadingMsg {
+    font-size:2.3em;
+    width:455px;
+    margin:auto;
 }

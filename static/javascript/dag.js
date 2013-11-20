@@ -28,9 +28,13 @@ Dag.prototype.addNode = function(/* String */ id, /* Array */ parents) {
 
     //Set parents -> new node connections
     for(var i in parents) {
-	var element = parents[i];
-	this.outEdges[element] = (element in this.outEdges) ? this.outEdges[element].push(id) : [id];
-        this.inEdges[id] = (id in this.inEdges) ? this.inEdges[id].push(element) : [element];
+		var element = parents[i];
+		if(!(element in this.outEdges))
+			this.outEdges[element] = [];
+		if(!(id in this.inEdges))
+			this.inEdges[id] = [];
+		this.outEdges[element].push(id);
+		this.inEdges[id].push(element);
     }
 }
 
@@ -65,11 +69,13 @@ Dag.prototype.render = function() {
         node.setLayout(value);
         node.addToPage();
     });
+    jsPlumb.repaintEverything();
     layout.eachEdge(function(e, inId, outId, value) {
-        var inNode = self.getNodeById(inId)
-        ,   outNode = self.getNodeById(outId)
+        var inBox = self.getNodeById(inId).getRight()
+        ,   outBox = self.getNodeById(outId).getLeft()
         ;
-        arrow.edgeArrow(inNode, outNode);
+        console.log(inBox);
+        jsPlumb.connect({source:inBox, target:outBox});
     });
 }
 /*

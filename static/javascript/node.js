@@ -26,10 +26,11 @@ Node.prototype.setSize = function(width, height) {
     this.width = width;
     this.height = height;
 }
-/*
- * TODO: remove this
- */
 createTransform = function(/* String */ id) {
+    if(!id)
+    {
+        id = $("#transformId").val();
+    }
     //Create transform object
     var movie = $('#movie');
     var jNode = $("<div class='box'></div>");
@@ -54,9 +55,43 @@ createTransform = function(/* String */ id) {
 
     return [jNode, startPoint, endPoint];
 };
+createData = function(/* String */ id) {
+    if(!id)
+    {
+        id = $("#dataId").val();
+    }
+    //Create transform object
+    var movie = $('#movie');
+    var jNode = $("<div class='circle'></div>");
+    //Add to page
+    movie.append(jNode);
+    jNode[0].id = id;
+    //Add jsPlumbing
+    jsPlumb.draggable(jNode);
+    this.startPoint = jsPlumb.addEndpoint(
+        jNode,
+        anEndpointSource
+    );
+    
+    this.endPoint = jsPlumb.addEndpoint(
+        jNode,
+        anEndpointDestination
+    );
+    //Update event handlers
+    jNode.dblclick( function(/*Event*/ e) {
+        $(".ui.modal.api").modal('show');
+    });
+
+    return [jNode, startPoint, endPoint];
+};
 
 Node.prototype.addToPage = function() {
-    transArray = createTransform(this.id);
+    if(this.className == "circle") {
+        transArray = createData(this.id); 
+    }
+    else {
+        transArray = createTransform(this.id); 
+    }
     this.element = transArray[0];
     this.startPoint = transArray[1];
     this.endPoint = transArray[2];
@@ -92,4 +127,8 @@ Node.prototype.getLeft = function() {
 }
 Node.prototype.getRight = function() {
     return this.startPoint;
+}
+Node.prototype.setClass = function(className) {
+    this.className = className;
+    console.log(this.className);
 }

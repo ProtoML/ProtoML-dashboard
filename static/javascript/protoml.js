@@ -6,8 +6,8 @@ $(document).ready(function() {
 
     prepModals();
     menuModal(".ui.modal.newtransform",".item.addtransform");
+    menuModal(".ui.modal.newdata",".item.adddata");
     menuModal(".ui.modal.search",".item.search");
-    $(".ui.modal.api").modal("show");
 });
 
 prepModals = function() {
@@ -19,7 +19,7 @@ menuModal = function(selector,eventSelector) {
 }
 
 loadDag = function() {
-    var dagArray = [ [1,[3]],[2,[3]],[3,[4,5]],[4,[]],[5,[6]],[6,[7,8,9]],[7,[]],[8,[]],[9,[]] ];
+    var dagArray = [ [1,[3]],[2,[3]],[3,[4,5],"circle"],[4,[]],[5,[6]],[6,[7,8,9],"circle"],[7,[]],[8,[]],[9,[]] ];
     var dag = new Dag();
     dag.loadFromList(dagArray);
     dag.render();

@@ -6,8 +6,19 @@ body { margin:0; background: #eee; }
 /* Transform boxes */
 .movieBox { padding-top: 50px; }
 .movieBox #movie { position:relative; }
+.circle {
+    width: 100px; height: 100px;
+    border-radius:50px;
+    background-color:#DDEEFF;
+    position:absolute;
+    left:200px;
+    border: solid 1px #555;
+}
+.circle:hover {
+    box-shadow: 2px 2px 19px #AAAAAA;
+    cursor: pointer;
+}
 .box {
-    display:inline-block;
     width: 140px; height: 100px;
     background-color:#DDEEFF;
     border: solid 1px #555;
@@ -18,10 +29,6 @@ body { margin:0; background: #eee; }
 .box:hover {
     box-shadow: 2px 2px 19px #AAAAAA;
     cursor: pointer;
-}
-.box.selected {
-    background-color:#ADFFFF;
-    border:2px solid #033;
 }
 .leftEnd svg * {fill: #FF2E2E;}
 .leftEnd:hover {

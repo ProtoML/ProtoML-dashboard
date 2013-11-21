@@ -9,6 +9,10 @@
       <i class="icon add sign"></i>
        Add Transform
     </a>
+    <a class="item adddata">
+      <i class="icon add sign"></i>
+       Add Data
+    </a>
     <a class="item" onclick="loadDag()">
       <i class="icon add sign"></i>
        Load Dag
@@ -30,9 +34,19 @@
   <div class="header">
     Create Transform
   </div>
-  <div class="content"> foobar </div>
+  <div class="content">Id: <input id="transformId" type="text"></input> </div>
   <div class="actions">
-    <div class="ui button" onclick="createTransform();">Create</div>
+    <div class="ui button" onclick="createTransform(false);">Create</div>
+    <div class="ui button">Cancel</div>
+  </div>
+</div>
+<div class="ui modal newdata">
+  <div class="header">
+    Create Data
+  </div>
+  <div class="content">Id: <input id="dataId" type="text"></input> </div>
+  <div class="actions">
+    <div class="ui button" onclick="createData(false);">Create</div>
     <div class="ui button">Cancel</div>
   </div>
 </div>
@@ -78,27 +92,6 @@
     <div class="loadingMsg">
       <i class="loading icon"></i>
       <span>Loading Transform...</span>
-    </div>
-    <div>
-      <div class="ui compact menu">
-        <div class="ui simple dropdown item">
-          Select Transform<i class="dropdown icon"></i>
-          <div class="menu">
-            <div class="item">Transform1</div>
-            <div class="item">Transform2</div>
-            <div class="item">Transform3</div>
-          </div>
-        </div>
-      </div>
-      <div>
-      </div>
-      <div>
-        <div>{</div>
-        <div> type: [ csv, tsv, w.e ],</div>
-        <div> value: <div class="ui input"><input type="text"></input></div>,</div>
-        <div> constraints: (purple, red, orange)</div>
-        <div> optional: FALSE</div>
-        <div>}</div>
     </div>
   </div>  
 </div>

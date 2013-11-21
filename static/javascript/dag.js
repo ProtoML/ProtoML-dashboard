@@ -16,14 +16,20 @@ function Dag() {
 Dag.prototype.loadFromList = function(/* Array */ data) {
     var self = this;
     data.forEach(function(element, index, array) {
-        self.addNode(element[0], element[1]);
+        self.addNode(element[0], element[1], element[2]);
     });
 }
 
-Dag.prototype.addNode = function(/* String */ id, /* Array */ parents) {
+Dag.prototype.addNode = function(/* String */ id, /* Array */ parents, /* String */ className) {
     //Create new node
     var newNode = new Node(id);
-    newNode.setSize(140, 100);
+    newNode.setClass(className);
+    if(className == "circle") {
+        newNode.setSize(100, 100);
+    }
+    else {
+        newNode.setSize(140, 100);
+    }
     this.nodes[id] = newNode;
 
     //Set parents -> new node connections

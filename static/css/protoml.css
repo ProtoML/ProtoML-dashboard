@@ -2,6 +2,8 @@ body { margin:0; background: #eee; }
 
 .hidden { display: none; }
 #searchQuery { width: 500px; }
+.newtransform .header { border-bottom: solid 1px #ccc; }
+.modalContent { height:600px; overflow-y:scroll; }
 
 .toggleButtons { margin: 10px; }
 

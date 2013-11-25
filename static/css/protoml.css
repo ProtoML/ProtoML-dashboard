@@ -1,40 +1,47 @@
 body { margin:0; background: #eee; }
 
 .hidden { display: none; }
-#searchForm input { width: 500px; }
+#searchQuery { width: 500px; }
+
+.toggleButtons { margin: 10px; }
 
 /* Transform boxes */
 .movieBox { padding-top: 50px; }
 .movieBox #movie { position:relative; }
-.circle {
+.icon.plus {
+    font-size:1.2em;
+}
+.icon.plus:hover {
+    text-shadow: 0px 0px 19px #333333;
+    cursor: pointer;
+}
+.node {
+    background-color:#E5E4E2;
+    position:absolute;
+    left:200px;
+    border: solid 1px #000;
+}
+.node:hover {
+    box-shadow: 2px 2px 19px #AAAAAA;
+    cursor: pointer;
+}
+.node.state {
+    width:60px; height:60px;
+    border-width: 3px;
+}
+.node.data {
     width: 100px; height: 100px;
     border-radius:50px;
-    background-color:#DDEEFF;
-    position:absolute;
-    left:200px;
-    border: solid 1px #555;
 }
-.circle:hover {
-    box-shadow: 2px 2px 19px #AAAAAA;
-    cursor: pointer;
-}
-.box {
+.node.transform {
     width: 140px; height: 100px;
-    background-color:#DDEEFF;
-    border: solid 1px #555;
     border-radius:10px;
-    position:absolute;
-    left:200px;
 }
-.box:hover {
-    box-shadow: 2px 2px 19px #AAAAAA;
-    cursor: pointer;
-}
-.leftEnd svg * {fill: #FF2E2E;}
+.leftEnd svg * {fill: #F6B26B;}
 .leftEnd:hover {
     box-shadow: 2px 2px 19px #AAAAAA;
 }
-.rightEnd svg * {fill: #009E1D;}
+.rightEnd svg * {fill: #6D9EEB;}
 .rightEnd { border-radius:10px; }
 .rightEnd:hover {
     box-shadow: 2px 2px 19px #AAAAAA;
@@ -56,3 +63,6 @@ header .header.headblue {
     width:455px;
     margin:auto;
 }
+/* Transform Form */
+.transformForm { margin: 25px; }
+.transformForm div { margin:10px; }

@@ -24,7 +24,10 @@ type Form struct {
 }
 
 func displayPage(w http.ResponseWriter, r *http.Request, p Page) {
-	t, _ := template.ParseFiles("templates/header.html", p.Template)
+	t, _ := template.ParseFiles("templates/header.html",
+								"templates/search.html",
+								"templates/form.html",
+								p.Template)
 	t.ExecuteTemplate(w, "content", p)
 }
 func static(w http.ResponseWriter, r *http.Request) {

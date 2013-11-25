@@ -1,0 +1,33 @@
+{{define "dataSearch"}}
+<div class="ui modal search">
+  <i class="icon close"></i>
+  <div class="header">
+    Search
+  </div>
+  <div class="content">
+    <div class="ui input fluid icon">
+      <form id="searchForm">
+        <div>
+          <input id="searchQuery" name="query" onkeyup="search.dataQuery()" type="text" placeholder="Search" />
+          <i class="search icon"></i>
+        </div>
+        <div class="toggleButtons">
+          <div class="circular small ui toggle button teal" onclick="search.toggleDataOption(this, 'ExclusiveType')">Exclusive Type</div>
+          <div class="circular small ui toggle button teal" onclick="search.toggleDataOption(this, 'Tags')">Tags</div>
+          <div class="circular small ui toggle button teal" onclick="search.toggleDataOption(this, 'FileFormat')">File Format</div>
+        </div>
+    </div>
+    <table class="ui table segment">
+      <thead>
+        <tr>
+          <th class="four wide">Source:</th>
+          <th>FileFormat:</th>
+          <th>ExclusiveType:</th>
+        </tr>
+      </thead>
+      <tbody id="searchResults" class="search rows">
+      </tbody>
+    </table>
+  </div>  
+</div>
+{{end}}

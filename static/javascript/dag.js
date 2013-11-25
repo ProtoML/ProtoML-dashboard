@@ -4,35 +4,32 @@ function Dag() {
     this.outEdges = {};
 }
 
-/** Loads dag data into dag assuming list of the form:
-  [ [node, [node's parents] ]
-  where:
-  [ [1,[]], [2,[1]], [3,[2,4]], [4,[]] ]
-  would represent:
-  1 -> 2 -\
-           --> 3
-       4 -/
-*/
-Dag.prototype.loadFromList = function(/* Array */ data) {
+Dag.prototype.loadFromMap = function(/* Array */ vertices, /* Array */ edges) {
     var self = this;
-    data.forEach(function(element, index, array) {
-        self.addNode(element[0], element[1], element[2]);
+    vertices.forEach(function(element, index, array) {
+        self.addNode(element[0], element[1]);
     });
 }
 
-Dag.prototype.addNode = function(/* String */ id, /* Array */ parents, /* String */ className) {
+Dag.prototype.addNode = function(/* String */ className, /* String */ id) {
     //Create new node
     var newNode = new Node(id);
     newNode.setClass(className);
-    if(className == "circle") {
+    if(className == "data") {
         newNode.setSize(100, 100);
     }
-    else {
+    else if(className == "transform") {
         newNode.setSize(140, 100);
     }
+    else if(className == "state") {
+        newNode.setSize(60, 60);
+    }
+    else {
+        //no-op
+    }
     this.nodes[id] = newNode;
-
-    //Set parents -> new node connections
+}
+Dag.prototype.addEdge = function() {
     for(var i in parents) {
 		var element = parents[i];
 		if(!(element in this.outEdges))
@@ -42,6 +39,7 @@ Dag.prototype.addNode = function(/* String */ id, /* Array */ parents, /* String
 		this.outEdges[element].push(id);
 		this.inEdges[id].push(element);
     }
+
 }
 
 Dag.prototype.getNodeById = function(/* String */ id) {

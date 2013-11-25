@@ -1,0 +1,38 @@
+{{define "transformForm"}}
+
+
+<div class="ui modal newtransform">
+  <div class="header">
+    Create Transform
+  </div>
+  <form class="transformForm">
+    <div class="templateId">
+      <select onchange="api.loadTransformData()" id="tfTemplateID">
+      </select>
+    </div>
+    <div class="name">
+      <label for="tfName">Name:</label>
+      <input type="text" id="tfName"></input>
+    </div>
+    <div class="function">
+      <label for="tfFunction">Function:</label>
+      <select id="tfFunction">
+      </select>
+    </div>
+    <div class="parameters">
+      <span>Parameters:</span>
+      <div id="tfParameters">
+      </div>
+    </div>
+    <div class="hyperParameters">
+      <span>HyperParameters:</span>
+      <div id="tfHyperParameters">
+      </div>
+    </div>
+  </form>
+  <div class="actions">
+    <div class="ui button" onclick="createNode(false, 'transform');">Create</div>
+    <div class="ui button">Cancel</div>
+  </div>
+</div>
+{{end}}

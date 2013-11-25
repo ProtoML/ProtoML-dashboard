@@ -26,14 +26,14 @@ Node.prototype.setSize = function(width, height) {
     this.width = width;
     this.height = height;
 }
-createTransform = function(/* String */ id) {
+createNode = function(/* String */ id, /* String */ className) {
     if(!id)
     {
         id = $("#transformId").val();
     }
     //Create transform object
     var movie = $('#movie');
-    var jNode = $("<div class='box'></div>");
+    var jNode = $("<div class='node " + className + "'></div>");
     //Add to page
     movie.append(jNode);
     jNode[0].id = id;
@@ -48,50 +48,12 @@ createTransform = function(/* String */ id) {
         jNode,
         anEndpointDestination
     );
-    //Update event handlers
-    jNode.dblclick( function(/*Event*/ e) {
-        $(".ui.modal.api").modal('show');
-    });
-
-    return [jNode, startPoint, endPoint];
-};
-createData = function(/* String */ id) {
-    if(!id)
-    {
-        id = $("#dataId").val();
-    }
-    //Create transform object
-    var movie = $('#movie');
-    var jNode = $("<div class='circle'></div>");
-    //Add to page
-    movie.append(jNode);
-    jNode[0].id = id;
-    //Add jsPlumbing
-    jsPlumb.draggable(jNode);
-    this.startPoint = jsPlumb.addEndpoint(
-        jNode,
-        anEndpointSource
-    );
-    
-    this.endPoint = jsPlumb.addEndpoint(
-        jNode,
-        anEndpointDestination
-    );
-    //Update event handlers
-    jNode.dblclick( function(/*Event*/ e) {
-        $(".ui.modal.api").modal('show');
-    });
 
     return [jNode, startPoint, endPoint];
 };
 
 Node.prototype.addToPage = function() {
-    if(this.className == "circle") {
-        transArray = createData(this.id); 
-    }
-    else {
-        transArray = createTransform(this.id); 
-    }
+    var transArray = createNode(this.id, this.className); 
     this.element = transArray[0];
     this.startPoint = transArray[1];
     this.endPoint = transArray[2];
@@ -130,5 +92,4 @@ Node.prototype.getRight = function() {
 }
 Node.prototype.setClass = function(className) {
     this.className = className;
-    console.log(this.className);
 }

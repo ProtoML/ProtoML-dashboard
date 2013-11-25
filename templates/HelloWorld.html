@@ -5,17 +5,9 @@
     <div class="item">
       <h5 class="ui header orange">Proto</h5><h5 class="ui header headblue">ML</h5>
     </div>
-    <a class="item addtransform">
+    <a class="item addtransform" onclick="api.getTransforms()">
       <i class="icon add sign"></i>
        Add Transform
-    </a>
-    <a class="item adddata">
-      <i class="icon add sign"></i>
-       Add Data
-    </a>
-    <a class="item" onclick="loadDag()">
-      <i class="icon add sign"></i>
-       Load Dag
     </a>
     <div class="right menu">
       <a class="item add search">
@@ -30,71 +22,8 @@
   <div id="movie"></div>
 </div>
 
-<div class="ui modal newtransform">
-  <div class="header">
-    Create Transform
-  </div>
-  <div class="content">Id: <input id="transformId" type="text"></input> </div>
-  <div class="actions">
-    <div class="ui button" onclick="createTransform(false);">Create</div>
-    <div class="ui button">Cancel</div>
-  </div>
-</div>
-<div class="ui modal newdata">
-  <div class="header">
-    Create Data
-  </div>
-  <div class="content">Id: <input id="dataId" type="text"></input> </div>
-  <div class="actions">
-    <div class="ui button" onclick="createData(false);">Create</div>
-    <div class="ui button">Cancel</div>
-  </div>
-</div>
-
-<div class="ui modal search">
-  <i class="icon close"></i>
-  <div class="header">
-    Search
-  </div>
-  <div class="content">
-    <div class="ui input fluid icon">
-      <form id="searchForm">
-        <div>
-          <select id="searchType" name="type" onchange="search.query()">
-            <option value="data">Data</option>
-            <option value="transform">Transform</option>
-          </select>
-          <select id="searchField" name="field" onchange="search.query()">
-            <option value="ExclusiveType">ExclusiveType</option>
-            <option value="Tags">Tags</option>
-            <option value="FileFormat">Format</option>
-          </select>
-          <input id="searchQuery" name="query" onkeypress="search.query()" type="text" placeholder="Search" />
-          <i class="search icon"></i>
-        </div>
-    </div>
-    <table class="ui table segment">
-      <thead>
-        <tr>
-          <th class="four wide">Source:</th>
-          <th>FileFormat:</th>
-          <th>ExclusiveType:</th>
-        </tr>
-      </thead>
-      <tbody id="searchResults" class="search rows">
-      </tbody>
-    </table>
-  </div>  
-</div>
-<div class="ui modal api">
-  <i class="icon close"></i>
-  <div class="content">
-    <div class="loadingMsg">
-      <i class="loading icon"></i>
-      <span>Loading Transform...</span>
-    </div>
-  </div>  
-</div>
+{{template "transformForm"}}
+{{template "dataSearch"}}
 
 {{template "footer"}}
 {{end}}

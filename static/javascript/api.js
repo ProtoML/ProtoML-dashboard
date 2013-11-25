@@ -38,7 +38,6 @@ var api = (function() {
           , parameterList = $('#tfParameters')[0]
           , hyperParameterList = $('#tfHyperParameters')[0]
           ;
-        console.log(transform);
         //Add functions:
         Object.keys(transform.Functions).forEach(function(fName, index, array) {
             data += "<option value='";
@@ -80,6 +79,10 @@ var api = (function() {
             });
         }
         hyperParameterList.innerHTML = data;
+    };
+    ap.countStates = function(/* String */ id) {
+        var transform = transforms[$("#tfTemplateID").val()];
+        return Object.keys(transform.PrimaryOutputStates).length;
     };
 
     //Private functions

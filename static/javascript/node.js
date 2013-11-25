@@ -26,10 +26,18 @@ Node.prototype.setSize = function(width, height) {
     this.width = width;
     this.height = height;
 }
+createTransformPack = function() {
+    var id = $("#tfName").val() + $("#tfTemplateID").val();
+    createNode(id, "transform");
+    var numStates = api.countStates(id);
+    for(var i = 0; i < numStates; i++) {
+        createNode(id + "state" + i, "state");
+    }
+}
 createNode = function(/* String */ id, /* String */ className) {
     if(!id)
     {
-        id = $("#transformId").val();
+        return;
     }
     //Create transform object
     var movie = $('#movie');
